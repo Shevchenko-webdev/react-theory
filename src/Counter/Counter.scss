@@ -1,0 +1,22 @@
+.Counter {
+  button {
+    margin: 20px;
+    padding: 3px 15px;
+
+    display: inline-block;
+
+    font-size: 20px;
+
+    background: #eaeaea;
+    border: 1px solid #ccc;
+    box-shadow: 3px 4px 5px 0 #ccc;
+
+    transition: all .3s ease-in;
+    &:hover {
+      background: darken(#eaeaea, 5%);
+
+      border: 1px solid darken(#ccc, 5%);
+      box-shadow: 3px 4px 5px 0 darken(#ccc, 5%);
+    }
+  }
+}

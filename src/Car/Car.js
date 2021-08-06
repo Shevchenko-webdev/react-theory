@@ -4,42 +4,6 @@ import './Car.scss';
 
 class Car extends Component {
 
-  // static getDerivedStateFromProps(props, state) {
-  //   console.group('getDerivedStateFromProps');
-  //   console.log(props);
-  //   console.log(state);
-  //   console.groupEnd();
-  //   return state;
-  // }
-
-  // getSnapshotBeforeUpdate(prevProps, prevState) {
-  //   console.group('getSnapshotBeforeUpdate');
-  //   console.log(prevProps);
-  //   console.log(prevState);
-  //   console.groupEnd();
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState, nextContext) {
-    // console.group('shouldComponentUpdate');
-    // console.log(nextProps);
-    // console.log(nextState);
-    // console.log(nextContext);
-    // console.groupEnd();
-    // return nextProps.name.trim() !== this.props.name.trim();
-  // }
-
-  // componentDidUpdate(prevProps, prevState, snapshot) {
-    // console.group('componentDidUpdate');
-    // console.log(prevProps);
-    // console.log(prevState);
-    // console.log(snapshot);
-    // console.groupEnd();
-  // }
-
-  // componentWillUnmount() {
-  //   console.log('componentWillUnmount');
-  // }
-
   render() {
     const inputClasses = ['input'];
 
