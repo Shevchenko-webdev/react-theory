@@ -5,21 +5,38 @@
   display: inline-block;
   width: 200px;
 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14);
+
   transition: border, box-shadow .3s;
+
+  &:hover {
+    border: 1px solid #aaa;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, .25);
+    cursor: pointer;
+  }
+
   & button {
     margin-top: 10px;
   }
+}
+.some {
+  font-size: 10px;
 }
 
 .input {
   border-radius: 4px;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14);
+
   &.green {
     border: 1px solid #008000;
   }
+
   &.red {
     border: 1px solid #ff0000
   }
+
   &.bold {
     border: 2px solid #008000;
   }

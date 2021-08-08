@@ -132,3 +132,52 @@ render() возвращаем код обвёрнутый в созранный 
                   </Auxiliary>
                 )
             }
+
+
+==Компоненты высшего порядка (HOC)==
+Способы создания HOC:
+1. Создать обычный React компонент, который возвращал бы props.children
+2. Создать функцию, которая принимает компонент. Эта функция принимает в качестве параметра компонент и возвращает JSX код с
+изменённым компонентов
+    const withClass = (Component, className) => {
+      return props => {
+        return (
+          <div className={className}>
+            <Component {...props} />
+          </div>
+        )
+      }
+    }
+
+
+==Валидация входящих параметров==
+Prop Types:
+npm install --save prop-types
+
+https://ru.reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper
+
+==Референции==
+С помощью референций можно получить доступ к какому-то определённому компоненту
+Для создания:
+1. Передать уникальный index в качестве параметра для нужного компонента
+2. В компоненте объявить конструктор и создать в нём переменную, которой присвоить значение React.createRef()
+    constructor(props) {
+        super(props);
+        const refer = React.createRef();
+    }
+3. Внутри компонента создать атрибут ref которому присвоить значение this.refer
+4. Элемент передаётся в свойстве current
+    this.refer.current.focus();
+
+==Context API==
+Позволяет передавать передавать состояния через компоненты
+1. В родителе экспортируем константу
+    export const ClickedContext = React.createContext(false);
+2. В родителе оборачиваем дочерний компонент, через который должно идти состояние в
+    <ClickedContext.Provider value={this.state.clicked}></NameContext.Provider>
+3. В компоненте, который должен принять состояние импортиурем константу
+    import {NameContext} from <path>;
+4. В компоненте, который должен принять состояние добавляем элемент константы с необходимой структурой
+    <ClickedContext.Consumer>
+        {clicked => clicked ? <p>Clicked</p> : null}
+    </ClickedContext.Consumer>

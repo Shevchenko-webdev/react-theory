@@ -1,40 +1,51 @@
 import React, {Component} from "react";
-import Radium from 'radium';
-import './Car.scss';
+import withClass from "../hoc/withClass";
+import PropTypes from 'prop-types'
+import classes from './Car.module.scss';
 
 class Car extends Component {
 
-  render() {
-    const inputClasses = ['input'];
+  constructor(props) {
+    super(props);
 
-    this.props.name !== '' ? inputClasses.push('green') : inputClasses.push('red');
-    if (this.props.name.length > 4) inputClasses.push('bold');
+    this.inputRef = React.createRef();
+  }
 
-    const style = {
-      border: '1px solid #ccc',
-      boxShadow: '0 4px 5px 0 rgba(0, 0, 0, .14)',
-      borderRadius: '5px',
-      ':hover': {
-        border: '1px solid #aaa',
-        boxShadow: '0 4px 15px 0 rgba(0, 0, 0, .25)',
-        cursor: 'pointer'
-      }
+  componentDidMount() {
+    if (this.props.index === 1) {
+      this.inputRef.current.focus();
     }
+  }
+
+  render() {
+    const inputClasses = [classes.input];
+
+    this.props.name !== '' ? inputClasses.push(classes.green) : inputClasses.push(classes.red);
+    if (this.props.name.length > 4) inputClasses.push(classes.bold);
 
     return (
-      <div className='Car' style={style}>
+      <>
         <h3>Car name: {this.props.name}</h3>
         <p>Year: <strong>{this.props.year}</strong></p>
         <input
+          ref={this.inputRef}
           type="text"
           onChange={this.props.onChangeName}
           value={this.props.name}
           className={inputClasses.join(' ')}
         />
         <button onClick={this.props.onDelete}>Delete</button>
-      </div>
+      </>
     )
   }
 }
 
-export default Radium(Car);
+Car.propTypes = {
+  index: PropTypes.number,
+  name: PropTypes.string,
+  year: PropTypes.number,
+  onDelete: PropTypes.func,
+  onChangeName: PropTypes.func,
+}
+
+export default withClass(Car, classes.Car);
